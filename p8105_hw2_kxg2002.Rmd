@@ -13,5 +13,17 @@ library(readxl)
 library(dplyr)
 ```
 
+## Load in the trash wheel data 
+
+```{r}
+trash_wheel_data = 
+  read_excel(
+    path = "./Data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", 
+    range = "A2:N408") %>% 
+  janitor::clean_names() %>% 
+  select(-homes_powered) %>% 
+  drop_na(dumpster) %>% 
+  mutate(sports_balls = as.integer(sports_balls))
+```
 
 
