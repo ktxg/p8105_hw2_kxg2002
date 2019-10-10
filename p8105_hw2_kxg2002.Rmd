@@ -104,5 +104,15 @@ unemployment_data =
     janitor::clean_names()
 ```
 
+## Merge data sets 
+
+```{r}
+join_polls_and_snp = 
+  left_join(polls_data, snp_data)
+
+all_joined_datasets = 
+  left_join(join_polls_and_snp, unemployment_data) 
+```
+
 
 
