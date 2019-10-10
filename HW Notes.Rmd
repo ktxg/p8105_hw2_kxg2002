@@ -1,8 +1,8 @@
 ---
-title: "p8105_hw2_kxg2002.Rmd"
+title: "HW 2"
 author: "Katie"
-date: "10/9/2019"
-output: github_document
+date: "10/8/2019"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -137,7 +137,7 @@ baby_names =
                             "asian and paci" = "asian and pacific islander", 
                             "black non hisp" = "black non hispanic", 
                             "white non hisp" = "white non hispanic")) %>% 
-  distinct(year_of_birth, gender, ethnicity, childs_first_name, .keep_all= TRUE)
+  distinct(baby_names, year_of_birth, gender, ethnicity, childs_first_name, .keep_all= TRUE)
 ```
 
 ## Create a table to show the rank in popularity of the name Olivia over the years 
@@ -175,5 +175,4 @@ Quick note: I tried to add color to geom_point by doing (aes(color = name)), but
 
 
 
-
-
+  
