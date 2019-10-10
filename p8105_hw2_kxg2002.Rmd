@@ -114,5 +114,15 @@ all_joined_datasets =
   left_join(join_polls_and_snp, unemployment_data) 
 ```
 
+## Write about the data 
+
+The polls data set contained information on the number and breakdown of current and past serving Democratic and Republican public officials, specifically governors, senators, and representatives. It also included the party representation of the President. The dimensions of the data set were `r dim(polls_data)`, the names of key variables included `r variable.names(polls_data)`, and the range of years listed were between `r range(pull(polls_data, year))`. 
+
+The snp data set contained information on the closing values of the S&P stock index on the date listed. The dimensions of the data set were `r dim(snp_data)`, the names of key variables included `r variable.names(snp_data)`, and the range of years listed were between `r range(pull(snp_data, year))`. 
+
+The unemployment data set contained information on the percentage of unemployment in the corresponding month and year. The dimensions of the data set were `r dim(unemployment_data)`, the names of key variables included `r variable.names(unemployment_data)`, and the range of years listed were between `r range(pull(unemployment_data, year))`. 
+
+The resulting combined dataset of all three contained information on the number of Democratic and Republican public officials and the offices they held during a specific month and year, the closing values of the S&P stock index during that time frame, and the percentage of unemployment that month and year. 
+
 
 
