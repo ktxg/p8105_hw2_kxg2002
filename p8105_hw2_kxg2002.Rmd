@@ -79,3 +79,18 @@ polls_data =
   select(year, month, president, everything(), -day, -status) 
 ```
 
+## Load, read, and clean data in snp.csv
+
+```{r}
+snp_data = 
+  read.csv("./Data/fivethirtyeight_datasets/snp.csv") %>% 
+  janitor::clean_names() %>% 
+  separate(col = date, into = c("month", "day", "year"), sep = "/") %>% 
+  mutate(year = as.integer(year), month = as.integer(month)) %>%  
+  mutate(month = month.abb[month]) %>% 
+  select(year, month, close, -day)
+```
+
+
+
+
