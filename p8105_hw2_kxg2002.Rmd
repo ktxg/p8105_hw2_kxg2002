@@ -140,6 +140,18 @@ baby_names =
   distinct(year_of_birth, gender, ethnicity, childs_first_name, .keep_all= TRUE)
 ```
 
+## Create a table to show the rank in popularity of the name Olivia over the years 
+
+```{r}
+olivia_table = 
+  filter(baby_names, childs_first_name == "olivia") %>% 
+  select(-gender, -childs_first_name, -count) %>% 
+  pivot_wider(
+    names_from = year_of_birth, 
+    values_from = rank) 
+```
+
+
 
 
 
