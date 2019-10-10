@@ -61,4 +61,21 @@ precip_data =
 
 Looking at the two datasets from 2017 and 2018, we can see that there was a substantial amount of precipitation for both years in May and July. However, there were also differences. For example, in 2018 there was a large amount of precipitation in September compared to 2017, where there was not a lot of precipitation. There were `r nrow(precip_data_2017)` observations in the 2017 precipiation data, `r nrow(precip_data_2018)` observations in the 2018 precipitation data, and `r nrow(trash_wheel_data)` observations from the trash wheel data. Key variables in the precipitation data included `r variable.names(precip_data)`. Key variables in the trash wheel data included `r variable.names(trash_wheel_data)`. The total precipitation in 2018 was `r sum(pull(precip_data_2018, total))`, and the median number of sports balls found in dumpsters in 2017 were `r median(pull(trash_wheel_data, sports_balls))`. 
 
+## Load, read, and clean data in pols-month.csv
+
+```{r}
+polls_data = 
+  read.csv("./Data/fivethirtyeight_datasets/pols-month.csv") %>% 
+  janitor::clean_names() %>% 
+  separate(col = mon, into = c("year", "month", "day"), sep = "-") %>% 
+  mutate(year = as.integer(year), month = as.integer(month), day = as.integer(day)) %>%  
+  mutate(month = month.abb[month]) %>% 
+  select(year, month, day, prez_gop, prez_dem, everything()) %>% 
+  pivot_longer(
+    prez_gop:prez_dem,
+    names_to = "president", 
+    values_to = "status"
+    ) %>% 
+  select(year, month, president, everything(), -day, -status) 
+```
 
